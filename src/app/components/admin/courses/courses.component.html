@@ -1,0 +1,42 @@
+<table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Budget</th>
+    <th>Start Date</th>
+    <th>Administrator</th>
+    <th>Options</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor='let i of listDepartments'>
+    <td>{{i.name}}</td>
+    <td>{{i.budget}}</td>
+    <td>{{i.startDate | amFromUtc | amDateFormat: 'YYYY-MM-DD'}}</td>
+    <td>{{i.administrator}}</td>
+    <td>
+      <button (click)='setData(i)'>See</button>
+      <button (click)='putDepartment(i.departmentId)'>Put</button>
+      <button (click)='deleteDepartment(i.departmentId)'>Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<label for="name"> Name </label>
+<input id="name" [(ngModel)] = 'name' [ngModelOptions]="{standalone: true}" type="text">
+
+<label for="budget"> Budget </label>
+<input id="budget" [(ngModel)] = 'budget' [ngModelOptions]="{standalone: true}" type="text">
+
+<label for="start_date"> Start Date </label>
+<input id="start_date" [(ngModel)] = 'start_date' [ngModelOptions]="{standalone: true}" type="date">
+
+<label for="administrator"> Administrator </label>
+<input id="administrator" [(ngModel)] = 'administrator' [ngModelOptions]="{standalone: true}" type="text">
+
+<button (click)='postDepartment()'>Add</button>

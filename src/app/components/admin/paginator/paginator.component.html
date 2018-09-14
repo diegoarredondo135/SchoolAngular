@@ -1,0 +1,16 @@
+<nav *ngIf="pageable" aria-label="Page navigation example">
+    <ul class="pagination">
+        <li (click)="previous()" class="page-item {{disablePrevious}}"><a style="color: #5b6be8" class="page-link">Previous</a></li>
+        <li *ngIf="page > 4 && !listConfigPagination.first" (click)="changePage(1)" class="page-item {{getActive(1)}}"><a class="page-link">1</a></li>
+        <li *ngIf="page > 4 && !listConfigPagination.first" class="page-item"><a style="color: #5b6be8" class="page-link">...</a></li>
+        <li *ngFor="let i of totalPages" (click)="changePage(i.page)" class="page-item {{getActive(i.page)}}"><a class="page-link">{{i.page}}</a></li>
+        <li *ngIf="listConfigPagination.totalPages > page + 2" class="page-item"><a style="color: #5b6be8" class="page-link">...</a></li> 
+        <li *ngIf="listConfigPagination.totalPages > page + 2" (click)="changePage(listConfigPagination.totalPages)" class="page-item {{getActive(listConfigPagination.totalPages)}}"><a class="page-link">{{listConfigPagination.totalPages}}</a></li>
+        <li (click)="next()" class="page-item {{disableNext}}"><a style="color: #5b6be8" class="page-link" >Next</a></li>
+        <select [(ngModel)] = 'size' [ngModelOptions]="{standalone: true}" style="width: 150px; margin-left: 10px;" class="custom-select">
+            <option (click)="changeSize()">5</option>
+            <option (click)="changeSize()">10</option>
+            <option (click)="changeSize()">20</option>
+        </select>
+    </ul>
+</nav>
