@@ -18,19 +18,19 @@ export class DepartmentsService {
         return this.rootService.getOne(this.ruta + id);
     }
 
-    postDepartments(data: any): Promise<any> {
+    postDepartment(data: any): Promise<any> {
         return this.rootService.post(this.ruta, data);
     }
 
-    putDepartments(id: number, data: any): Promise<any> {
+    putDepartment(id: number, data: any): Promise<any> {
         return this.rootService.put(this.ruta + id, data);
     }
 
-    patchDepartments(id: number, data: any): Promise<any> {
+    patchDepartment(id: number, data: any): Promise<any> {
         return this.rootService.patch(this.ruta + id, data);
     }
 
-    deleteDepartments(id: number): Promise<any> {
+    deleteDepartment(id: number): Promise<any> {
         return this.rootService.delete(this.ruta + id);
     }
 
