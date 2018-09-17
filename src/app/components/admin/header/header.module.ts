@@ -6,9 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { HeaderComponent } from './header.component';
-import { HomeComponent } from '../home/home.component';
+import { HomeComponent } from './home/home.component';
 import { FooterComponent } from '../footer/footer.component';
-import { DepartmentsComponent } from '../departments/departments.component';
+import { DepartmentsComponent } from './departments/departments.component';
 
 const HOME_ROUTES: Routes =  [
   { path: '', component: HeaderComponent, children: [

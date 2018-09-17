@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DepartmentsService } from '../../../services/deparments.service';
-import { PaginatorComponent } from '../paginator/paginator.component';
+import { DepartmentsService } from '../../../../services/deparments.service';
+import { PaginatorComponent } from '../../paginator/paginator.component';
 import swal from 'sweetalert2';
 
 @Component({
