@@ -22,11 +22,11 @@ export class DepartmentsComponent implements OnInit {
 
   ngOnInit() {
     this.pag.pageable = true;
-    this.getAll();
+    this.getDepartments();
   }
 
-  getAll() {
-    this.departmentsService.getAll(this.pag.pageable, this.pag.page, this.pag.size).then(res => {
+  getDepartments() {
+    this.departmentsService.getDepartments(this.pag.pageable, this.pag.page, this.pag.size).then(res => {
       if (this.pag.pageable) {
         this.pag.setPages(res.json());
         this.listDepartments = this.pag.listConfigPagination.content;
@@ -36,40 +36,40 @@ export class DepartmentsComponent implements OnInit {
     });
   }
 
-  // getOne(id: number) {
-  //   this.listDepartments = [];
-  //   this.departmentsService.getDepartment(id).subscribe(res => {
-  //     this.listDepartments[0] = res.json();
-  //   });
-  // }
+  getDepartment(id: number) {
+    this.listDepartments = [];
+    this.departmentsService.getDepartment(id).then(res => {
+      this.listDepartments[0] = res.json();
+    });
+  }
 
-  post() {
+  postDepartments() {
     const data = {
       name: this.name,
       budget: this.budget,
       startDate: new Date(this.start_date),
       administrator: this.administrator
     };
-    this.departmentsService.post(data).then(res => {
+    this.departmentsService.postDepartments(data).then(res => {
       swal('Great Job', res.json().message, 'success');
-      this.getAll();
+      this.getDepartments();
     });
   }
 
-  put() {
+  putDepartments() {
     const data = {
       name: this.name,
       budget: this.budget,
       startDate: new Date(this.start_date).valueOf(),
       administrator: this.administrator
     };
-    this.departmentsService.put(this.id_department, data).then(res => {
+    this.departmentsService.putDepartments(this.id_department, data).then(res => {
       swal('Great Job', res.json().message, 'success');
-      this.getAll();
+      this.getDepartments();
     });
   }
 
-  patch() {
+  patchDepartments() {
     const data = {
       name: this.name,
       budget: this.budget,
@@ -77,17 +77,17 @@ export class DepartmentsComponent implements OnInit {
       administrator: this.administrator
     };
     console.log(data);
-    this.departmentsService.patch(this.id_department, data).then(res => {
+    this.departmentsService.patchDepartments(this.id_department, data).then(res => {
       swal('Great Job', res.json().message, 'success');
-      this.getAll();
+      this.getDepartments();
 
     });
   }
 
-  delete() {
-    this.departmentsService.delete(this.id_department).then(res => {
+  deleteDepartments() {
+    this.departmentsService.deleteDepartments(this.id_department).then(res => {
       swal('Great Job', res.json().message, 'success');
-      this.getAll();
+      this.getDepartments();
     });
   }
 
@@ -117,7 +117,7 @@ export class DepartmentsComponent implements OnInit {
 
   pagination() {
     this.pag.pageable = !this.pag.pageable;
-    this.getAll();
+    this.getDepartments();
   }
 
 }
